@@ -7,7 +7,7 @@ async function sendImage(
   const { status } = await this.sessions[identificator].sendMessage(
     phoneNumber,
     {
-      image: { imageUrl },
+      image: { url: imageUrl },
       caption,
     }
   );
