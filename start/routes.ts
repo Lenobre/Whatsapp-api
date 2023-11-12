@@ -29,11 +29,12 @@ Route.group(() => {
   }).prefix("/auth");
 
   Route.group(() => {
-    Route.get("/qrcode", async ({ view, auth }) => {
-      WaManager.create("leandro");
+    Route.get("/qrcode", async ({ view, request }) => {
+      const token: string | any = await request.header("Authorization");
+      WaManager.create(token);
       return await view.render("qrcode");
-    });
-    Route.post("/sendMessage", "WasController.sendMessage");
-    Route.post("sendImage", "WasController.sendImage");
+    }).middleware("auth");
+    Route.post("/sendMessage", "WasController.sendMessage").middleware("auth");
+    Route.post("sendImage", "WasController.sendImage").middleware("auth");
   }).prefix("/wa");
 }).prefix("/api");

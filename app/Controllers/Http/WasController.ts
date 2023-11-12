@@ -6,13 +6,16 @@ import SendMessageValidator from "App/Validators/Wa/SendMessageValidator";
 export default class WasController {
   public async sendMessage({ request, response }: HttpContextContract) {
     await request.validate(SendMessageValidator);
-    const { phoneNumber, message } = await request.only([
+    let { phoneNumber, message } = await request.only([
       "phoneNumber",
       "message",
     ]);
+    const token: any = await request.header("Authorization");
 
-    const messageStatus = WaManager.sendMessage(
-      "leandro",
+    phoneNumber = convertNumber(phoneNumber);
+
+    const messageStatus: Promise<Boolean> = WaManager.sendMessage(
+      token,
       phoneNumber,
       message
     );
@@ -22,22 +25,32 @@ export default class WasController {
         Message: "Não foi possível enviar a mensagem.",
       });
 
-    return response.badRequest({ Message: "Mensagem enviada com sucesso." });
+    return response.ok({ Message: "Mensagem enviada com sucesso." });
   }
 
   public async sendImage({ request, response }: HttpContextContract) {
     await request.validate(SendImageValidator);
-    const { phoneNumber, imageUrl, caption } = await request.only([
+    let { phoneNumber, imageUrl, caption } = await request.only([
       "phoneNumber",
       "imageUrl",
       "caption",
     ]);
+    const token: any = await request.header("Authorization");
 
-    const messageStatus = WaManager.sendImage(
-      "leandro",
+    phoneNumber = convertNumber(phoneNumber);
+
+    const messageStatus: Promise<Boolean> = WaManager.sendImage(
+      token,
       phoneNumber,
       imageUrl,
       caption
     );
+
+    if (!messageStatus)
+      return response.badRequest({
+        Message: "Não foi possível enviar a imagem.",
+      });
+
+    return response.ok({ Message: "Imagem enviada com sucesso." });
   }
 }
