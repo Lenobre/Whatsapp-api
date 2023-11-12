@@ -2,7 +2,7 @@ async function sendMessage(
   identificator: string,
   phoneNumber: string,
   message: string
-) {
+): Promise<Boolean> {
   const { status } = await this.sessions[identificator].sendMessage(
     phoneNumber,
     {

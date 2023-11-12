@@ -1,13 +1,19 @@
 async function sendImage(
   identificator: string,
   phoneNumber: string,
-  url: string,
+  imageUrl: string,
   caption: string = ""
-) {
-  this.sessions[identificator].sendMessage(phoneNumber, {
-    image: { url },
-    caption,
-  });
+): Promise<Boolean> {
+  const { status } = await this.sessions[identificator].sendMessage(
+    phoneNumber,
+    {
+      image: { url: imageUrl },
+      caption,
+    }
+  );
+  if (status !== 1) return false;
+
+  return true;
 }
 
 export default sendImage;

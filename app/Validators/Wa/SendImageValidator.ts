@@ -24,7 +24,7 @@ export default class SendImageValidator {
    *    ```
    */
   public schema = schema.create({
-    phoneNumber: schema.string({}, [rules.required()]),
+    phoneNumber: schema.string({}, [rules.required(), rules.mobile()]),
     imageUrl: schema.string({}, [
       rules.required(),
       rules.url(),

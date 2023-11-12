@@ -24,7 +24,10 @@ export default class SendMessageValidator {
    *    ```
    */
   public schema = schema.create({
-    phoneNumber: schema.string({ trim: false }, [rules.required()]),
+    phoneNumber: schema.string({ trim: false }, [
+      rules.required(),
+      rules.mobile(),
+    ]),
     message: schema.string({}, [rules.required(), rules.minLength(1)]),
   });
 
