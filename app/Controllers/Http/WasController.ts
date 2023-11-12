@@ -1,5 +1,4 @@
 import type { HttpContextContract } from "@ioc:Adonis/Core/HttpContext";
-import waManager from "App/Services/Baileys/WaManager";
 import WaManager from "App/Services/Baileys/WaManager";
 import SendImageValidator from "App/Validators/Wa/SendImageValidator";
 import SendMessageValidator from "App/Validators/Wa/SendMessageValidator";
@@ -34,7 +33,7 @@ export default class WasController {
       "caption",
     ]);
 
-    const messageStatus = waManager.sendImage(
+    const messageStatus = WaManager.sendImage(
       "leandro",
       phoneNumber,
       imageUrl,

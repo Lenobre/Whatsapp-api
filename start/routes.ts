@@ -34,5 +34,6 @@ Route.group(() => {
       return await view.render("qrcode");
     });
     Route.post("/sendMessage", "WasController.sendMessage");
+    Route.post("sendImage", "WasController.sendImage");
   }).prefix("/wa");
 }).prefix("/api");

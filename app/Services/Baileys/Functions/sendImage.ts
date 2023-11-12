@@ -1,11 +1,11 @@
 async function sendImage(
   identificator: string,
   phoneNumber: string,
-  url: string,
+  imageUrl: string,
   caption: string = ""
 ) {
   this.sessions[identificator].sendMessage(phoneNumber, {
-    image: { url },
+    image: { imageUrl },
     caption,
   });
 }
