@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Whatsapp|Qrcode</title>
+</head>
+<body>
+  <img id="qrcode" src="" alt="Qrcode to make login in Whatsapp">
+  <script src="https://cdn.socket.io/4.0.1/socket.io.min.js"></script>
+  <script>
+    const qrcode = document.getElementById("qrcode");
+    const socket = io();
+    socket.on('qrcode', (data) => {
+      qrcode.setAttribute("src", data);
+    });
+  </script>
+</body>
+</html>
