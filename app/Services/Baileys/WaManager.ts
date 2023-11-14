@@ -2,7 +2,7 @@ import sendMessage from "./Functions/sendMessage";
 import create from "./Functions/create";
 import sendImage from "./Functions/sendImage";
 
-const waManager = {
+const WaManager = {
   sessions: {},
 
   create,
@@ -10,4 +10,4 @@ const waManager = {
   sendImage,
 };
 
-export default waManager;
+export default WaManager;

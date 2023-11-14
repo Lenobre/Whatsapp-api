@@ -1,4 +1,5 @@
 import type { HttpContextContract } from "@ioc:Adonis/Core/HttpContext";
+import Database from "@ioc:Adonis/Lucid/Database";
 import User from "App/Models/User";
 import CredentialValidator from "App/Validators/Auth/CredentialValidator";
 
@@ -58,7 +59,8 @@ export default class AuthController {
           Message: "Nenhum usuário foi encontrado.",
         });
 
-      await auth.use("api").revoke();
+      await Database.from("api_tokens").where("user_id", user.id).delete();
+
       const token = await auth.attempt(
         credentials.email,
         credentials.password,
@@ -66,6 +68,7 @@ export default class AuthController {
           expiresIn: "5 days",
         }
       );
+
       if (!token)
         return response.badRequest({
           Message:
