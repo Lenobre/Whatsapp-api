@@ -3,12 +3,12 @@
 
 Api criada para o aplicativo de mensagens **Whatsapp**, é feita uma conexão com o websocket, deste modo, podendo desta forma, ler mensagens, enviar mensagens (imagem, arquivos...), pegar contatos salvos...
 
-
 ## Stack utilizada
 
 Técnologias principalmente usadas.
 
-**Back-end:** Node, Adonisjs, Baileys, Redis e Mysql (Ainda não adicionado, temporariamente utilizando sqlite).
+**Back-end:** Node, Adonisjs, Baileys, Redis e Mysql(Ainda não foi adicionado, temporariamente utilizando mysql).
+
 
 
 ## Funcionalidades
@@ -22,6 +22,9 @@ Concluído: ✅ Não pronto: ❌
 - Enviar mensagem com imagem ✅
 - Enviar mensagem com vídeo ❌
 - Enviar mensagem com outros arquivos(excel, pdf) ❌
+
+
+
 
 
 
@@ -122,6 +125,9 @@ Se não foi possível gerar o token, retorna um bad request.
 ### Wa (Whatsapp Routes)
 **Nota:** A rota de geração de qrcode está sujeita a mudanças, pois, ao fazer um teste com axios por usar websocket para a transimissão do qrcode não foi possível obter o mesmo.
 #### Gerar qrcode
+```http
+  GET /api/wa/qrcode
+```
 | Parâmetro   | Tipo       | Descrição                                   |
 | :---------- | :--------- | :------------------------------------------ |
 | `token` | `string` | **Obrigatório**. Enviado no header. |
@@ -130,6 +136,9 @@ Se não foi possível gerar o token, retorna um bad request.
 Retorna uma view que por sua vez recebe o qrcode por websocket, é possível visualizar usando o "getIt (Exec. para testes de rotas)" ou selenium.
 
 #### Enviar mensagem
+```http
+  POST /api/wa/sendMessage
+```
 | Parâmetro   | Tipo       | Descrição                                   |
 | :---------- | :--------- | :------------------------------------------ |
 | `token` | `string` | **Obrigatório**. Enviado no header. |
@@ -150,6 +159,9 @@ Se a mensagem for enviada com sucesso
 }
 ```
 #### Enviar imagem
+```http
+  POST /api/wa/sendImage
+```
 | Parâmetro   | Tipo       | Descrição                                   |
 | :---------- | :--------- | :------------------------------------------ |
 | `token` | `string` | **Obrigatório**. Enviado no header. |
