@@ -34,7 +34,7 @@ Concluído: ✅ Não pronto: ❌
 **Nota:** Em breve será alterado, autenticação simples apenas para testes.
 #### Registrar usuário
 
-```http
+```
   POST /api/auth/register
 ```
 
