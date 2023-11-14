@@ -70,7 +70,7 @@ Caso o usuário tenha sido registrado com **sucesso** e não houve nenhum outro 
 
 #### Logar usuário
 
-```http
+```
   POST /api/auth/login
 ```
 
@@ -99,7 +99,7 @@ Se o usuário for logado com sucesso.
 
 #### Deslogar usuário
 
-```http
+```
   POST /api/auth/logout
 ```
 
@@ -136,7 +136,7 @@ Se não foi possível gerar o token, retorna um bad request.
 Retorna uma view que por sua vez recebe o qrcode por websocket, é possível visualizar usando o "getIt (Exec. para testes de rotas)" ou selenium.
 
 #### Enviar mensagem
-```http
+```
   POST /api/wa/sendMessage
 ```
 | Parâmetro   | Tipo       | Descrição                                   |
@@ -159,7 +159,7 @@ Se a mensagem for enviada com sucesso
 }
 ```
 #### Enviar imagem
-```http
+```
   POST /api/wa/sendImage
 ```
 | Parâmetro   | Tipo       | Descrição                                   |
