@@ -96,7 +96,7 @@ Se o usuário for logado com sucesso.
 	    "expires_at": "2023-23-23T23:23:23.159-03:00"
 	}
 }
-
+```
 #### Deslogar usuário
 
 ```
@@ -125,7 +125,7 @@ Se não foi possível gerar o token, retorna um bad request.
 ### Wa (Whatsapp Routes)
 **Nota:** A rota de geração de qrcode está sujeita a mudanças, pois, ao fazer um teste com axios por usar websocket para a transimissão do qrcode não foi possível obter o mesmo.
 #### Gerar qrcode
-```http
+```
   GET /api/wa/qrcode
 ```
 | Parâmetro   | Tipo       | Descrição                                   |
